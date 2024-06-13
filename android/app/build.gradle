@@ -58,6 +58,38 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        start {
+            dimension "version"
+            applicationIdSuffix ""
+            versionNameSuffix "-start"
+            versionCode 1
+            versionName "0.0.1"
+            // signingConfig signingConfigs.release
+        }
+
+        dev {
+            dimension "version"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            versionCode 1
+            versionName "0.0.1"
+           // signingConfig signingConfigs.release
+        }
+
+        prod {
+            dimension "version"
+            applicationIdSuffix ".prod"
+            versionNameSuffix "-prod"
+            versionCode 1
+            versionName "0.0.1"
+           // signingConfig signingConfigs.release
+        }
+    }
+
 }
 
 flutter {

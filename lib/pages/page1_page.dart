@@ -1,3 +1,5 @@
+import 'package:app_bloc/app_config.dart';
+import 'package:app_bloc/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,10 +12,11 @@ class Page1Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userBloc = BlocProvider.of<UserBloc>(context, listen: false);
+    final name = AppConfig.instance.name;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User'),
+        title: Text('User $name'),
         actions: [
           IconButton(
             icon: const Icon(Icons.delete_outline),
@@ -46,6 +49,7 @@ class InformacionUsuario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Responsive responsive = Responsive.of(context);
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -53,13 +57,15 @@ class InformacionUsuario extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('General',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('General',
+              style: TextStyle(
+                  fontSize: responsive.dp(1.8), fontWeight: FontWeight.bold)),
           const Divider(),
           ListTile(title: Text('Nombre: ${user.name}')),
           ListTile(title: Text('Edad: ${user.age}')),
-          const Text('Profesiones',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('Profesiones',
+              style: TextStyle(
+                  fontSize: responsive.dp(4.8), fontWeight: FontWeight.bold)),
           const Divider(),
           ...user.professions.map((prof) => ListTile(title: Text(prof)))
         ],
