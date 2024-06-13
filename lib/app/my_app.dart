@@ -1,12 +1,9 @@
-import 'package:app_bloc/pages/page1_page.dart';
-import 'package:app_bloc/pages/page2_page.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/user/user_bloc.dart';
-
-void main() => runApp(const MyApp());
+import '../feature/auth/bloc/user/user_bloc.dart';
+import '../feature/auth/pages/page1_page.dart';
+import '../feature/auth/pages/page2_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
       providers: [BlocProvider(create: (_) => UserBloc())],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Material App',
+        title: 'Bloc App',
         initialRoute: 'page1',
         routes: {
           'page1': (_) => const Page1Page(),

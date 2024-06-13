@@ -45,7 +45,7 @@ android {
         applicationId "com.systemfailed.app_bloc"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -58,10 +58,36 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+//        start {
+//            applicationIdSuffix ""
+//            versionNameSuffix "-start"
+//            versionCode 1
+//            versionName "0.0.1"
+//            // signingConfig signingConfigs.release
+//        }
+        dev {
+            resValue "string", "app_name", "App Bloc Dev"
+            applicationIdSuffix ".dev"
+        }
+
+        prod {
+            resValue "string", "app_name", "App Bloc"
+            // signingConfig signingConfigs.release
+        }
+    }
+
 }
 
 flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'com.google.android.gms:play-services-ads:23.2.0'
+    implementation platform('com.google.firebase:firebase-bom:33.1.2')
+    // Bill of Materials de Firebase
+}
