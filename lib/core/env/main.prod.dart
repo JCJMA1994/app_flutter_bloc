@@ -1,8 +1,8 @@
-import 'package:app_bloc/env/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../app/my_app.dart';
+import '../../app/my_app.dart';
+import 'app_config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
